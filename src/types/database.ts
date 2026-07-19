@@ -23,6 +23,9 @@ export interface Property {
   monthly_rent: number
   monthly_arnona: number
   monthly_building_fee: number
+  monthly_insurance: number
+  monthly_maintenance: number
+  monthly_transport: number
   main_image_url: string | null
   status: string
   notes: string | null
@@ -35,7 +38,48 @@ export interface PropertyImage {
   property_id: string
   household_id: string
   storage_path: string
-  public_url: string
+  public_url: string | null
   created_by: string
   created_at: string
+}
+
+export interface HouseholdSettings {
+  id?: string
+  household_id: string
+  monthly_income: number
+  fixed_expenses: number
+  current_equity: number
+  protected_reserve: number
+  desired_payment: number
+  maximum_payment: number
+}
+
+export interface PropertyRating {
+  id?: string
+  property_id: string
+  user_id: string
+  overall: number
+  location: number
+  layout: number
+  price: number
+  neighborhood: number
+  future_potential: number
+}
+
+export interface PropertyTask {
+  id: string
+  property_id: string
+  title: string
+  assigned_to: string | null
+  due_date: string | null
+  completed: boolean
+}
+
+export interface PropertyComment {
+  id: string
+  property_id: string
+  user_id: string
+  content: string
+  created_at: string
+  author_name?: string
 }

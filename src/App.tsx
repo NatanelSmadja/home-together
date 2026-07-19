@@ -8,6 +8,9 @@ import { PropertiesPage } from './pages/PropertiesPage'
 import { PropertyFormPage } from './pages/PropertyFormPage'
 import { PropertyDetailPage } from './pages/PropertyDetailPage'
 import { CalculatorPage } from './pages/CalculatorPage'
+import { ComparePage } from './pages/ComparePage'
+import { SettingsPage } from './pages/SettingsPage'
+import { ReportPage } from './pages/ReportPage'
 
 export default function App() {
   return (
@@ -22,7 +25,9 @@ export default function App() {
             <Route path="properties/:id/edit" element={<PropertyFormPage />} />
             <Route path="properties/:id" element={<PropertyDetailPage />} />
             <Route path="calculator" element={<CalculatorPage />} />
-            
+            <Route path="compare" element={<ComparePage />} />
+            <Route path="settings" element={<SettingsPage />} />
+            <Route path="report" element={<ReportPage />} />
           </Route>
         </Routes>
       </AuthProvider>
