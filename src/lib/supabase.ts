@@ -8,5 +8,11 @@ if (!url || !anonKey) {
 }
 
 export const supabase = createClient(url, anonKey, {
-  auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: true,
+    storage: window.localStorage,
+    storageKey: 'home-together-auth'
+  }
 })

@@ -1,9 +1,23 @@
-import { Navigate } from 'react-router-dom'
+import type { ReactNode } from 'react'
+import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
-export function ProtectedRoute({ children }: { children: React.ReactNode }) {
+export function ProtectedRoute({ children }: { children: ReactNode }) {
   const { user, loading } = useAuth()
-  if (loading) return <div className="center-screen">טוען…</div>
-  if (!user) return <Navigate to="/login" replace />
+  const location = useLocation()
+
+  if (loading) {
+    return (
+      <div className="center-screen auth-loading">
+        <div className="loading-ring" />
+        <span>פותח את הבית שלנו…</span>
+      </div>
+    )
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace state={{ from: location.pathname }} />
+  }
+
   return children
 }
